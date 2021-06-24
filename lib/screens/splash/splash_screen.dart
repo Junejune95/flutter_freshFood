@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:freshFood/components/bg_svg.dart';
 import 'package:freshFood/components/primary_button.dart';
 import 'package:freshFood/constants.dart';
+import 'package:freshFood/screens/home/home_screen.dart';
 
 class SplashScreen extends StatelessWidget {
   static String routeName = "/splash";
@@ -44,7 +44,12 @@ class SplashScreen extends StatelessWidget {
                     height: 30,
                   ),
                   PrimaryButton(
-                    press: () {},
+                    press: () {
+                      Navigator.pushNamed(
+                        context,
+                        HomeScreen.routeName,
+                      );
+                    },
                     title: 'Get Started',
                   ),
                 ],
