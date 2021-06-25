@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../constants.dart';
+import '../../../constants.dart';
 
 class SearchBox extends StatelessWidget {
   @override
@@ -10,7 +10,7 @@ class SearchBox extends StatelessWidget {
       left: 20,
       child: Container(
         height: 50,
-        width: MediaQuery.of(context).size.width/1.12,
+        width: MediaQuery.of(context).size.width/1.17,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(8),
           color: ktextLightColor,

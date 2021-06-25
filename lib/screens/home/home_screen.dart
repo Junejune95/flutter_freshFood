@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
-import 'package:freshFood/constants.dart';
+import 'package:freshFood/models/foodStuff.dart';
 import 'package:freshFood/models/menu.dart';
-import 'package:freshFood/screens/home/menu_card.dart';
-import 'package:freshFood/screens/home/profile_image.dart';
-import 'package:freshFood/screens/home/search_text_box.dart';
-import 'package:freshFood/screens/home/show_cart.dart';
+
+import '../../constants.dart';
+import 'components/menu_card.dart';
+import 'components/popular_card.dart';
+import 'components/popular_row.dart';
+import 'components/profile_image.dart';
+import 'components/search_text_box.dart';
+import 'components/show_cart.dart';
 
 class HomeScreen extends StatefulWidget {
   static String routeName = "/home";
@@ -38,6 +41,36 @@ class _HomeScreenState extends State<HomeScreen> {
     ),
   ];
 
+  List foodStuffs = [
+    FoodStuff(
+        name: 'Banana',
+        amount: '1.50',
+        bgColor: Color(0xFFD4B1AB),
+        image: 'assets/images/banna.png',
+        textColor: Colors.yellow[300]),
+    FoodStuff(
+        name: 'Strawberry',
+        amount: '3.50',
+        bgColor: Color(0xFFEBEBAB),
+        textColor: Colors.red,
+        image: 'assets/images/strawberry.png'),
+  ];
+
+  List foodStuffs2 = [
+    FoodStuff(
+        name: 'Cherry',
+        amount: '3.00',
+        bgColor: Color(0xFFEFD100),
+        image: 'assets/images/peach.png',
+        textColor: Colors.redAccent),
+    FoodStuff(
+        name: 'Pineapple',
+        amount: '3.50',
+        bgColor: Color(0xFF6CA82C),
+        textColor: Colors.orange[400],
+        image: 'assets/images/pineapple.png'),
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -60,7 +93,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     top: 45,
                     left: 20,
                     child: Container(
-                      width: MediaQuery.of(context).size.width / 1.13,
+                      width: MediaQuery.of(context).size.width / 1.17,
                       height: 45,
                       // color: Colors.white,
                       child: Row(
@@ -103,6 +136,31 @@ class _HomeScreenState extends State<HomeScreen> {
                   scrollDirection: Axis.horizontal,
                   itemCount: menuLists.length,
                 ),
+              ),
+            ),
+            PopularRow(),
+            Positioned(
+              top: 305,
+              left: 10,
+              child: Row(
+                children: List.generate(foodStuffs.length, (index) {
+                  print(foodStuffs[index].image);
+                  return PopularCard(
+                    foodStuff: foodStuffs[index],
+                  );
+                }),
+              ),
+            ),
+            Positioned(
+              top: 545,
+              left: 10,
+              child: Row(
+                children: List.generate(foodStuffs.length, (index) {
+                  print(foodStuffs[index].image);
+                  return PopularCard(
+                    foodStuff: foodStuffs2[index],
+                  );
+                }),
               ),
             )
           ],
