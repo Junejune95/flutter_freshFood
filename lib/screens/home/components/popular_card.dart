@@ -56,7 +56,7 @@ class PopularCard extends StatelessWidget {
                         Text(
                           'Ecuador',
                           style: TextStyle(
-                            color: Colors.grey[600],
+                            color: foodStuff.locationColor==null ? Colors.grey[600] : foodStuff.locationColor,
                             fontWeight: FontWeight.w500,
                           ),
                         ),

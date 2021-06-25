@@ -6,6 +6,6 @@ ThemeData theme() {
     scaffoldBackgroundColor: Colors.white,
     fontFamily: "Noto Sans",
     visualDensity: VisualDensity.adaptivePlatformDensity,
-    
+
   );
 }

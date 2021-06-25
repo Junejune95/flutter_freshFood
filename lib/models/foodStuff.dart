@@ -6,6 +6,8 @@ class FoodStuff {
   String amount;
   Color bgColor;
   Color textColor;
+  Color locationColor;
+  String locationName;
 
     FoodStuff({
     this.name,
@@ -13,5 +15,7 @@ class FoodStuff {
     this.amount,
     this.bgColor,
     this.textColor,
+    this.locationColor,
+    this.locationName,
   });
 }

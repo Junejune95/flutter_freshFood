@@ -6,7 +6,7 @@ import '../../constants.dart';
 import 'components/menu_card.dart';
 import 'components/popular_card.dart';
 import 'components/popular_row.dart';
-import 'components/profile_image.dart';
+import '../../components/profile_image.dart';
 import 'components/search_text_box.dart';
 import 'components/show_cart.dart';
 
@@ -64,11 +64,13 @@ class _HomeScreenState extends State<HomeScreen> {
         image: 'assets/images/peach.png',
         textColor: Colors.redAccent),
     FoodStuff(
-        name: 'Pineapple',
-        amount: '3.50',
-        bgColor: Color(0xFF6CA82C),
-        textColor: Colors.orange[400],
-        image: 'assets/images/pineapple.png'),
+      name: 'Papaya',
+      amount: '3.50',
+      bgColor: Color(0xFF6CA82C),
+      textColor: Colors.orange[400],
+      image: 'assets/images/pineapple.png',
+      locationColor: Colors.grey[50]
+    ),
   ];
 
   @override
