@@ -17,8 +17,8 @@ class SingleCart extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
-            height: 120,
-            width: 120,
+            height: 110,
+            width: 110,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10),
               image: DecorationImage(

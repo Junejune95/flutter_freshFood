@@ -6,7 +6,7 @@ class SearchBox extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Positioned(
-      top: 110,
+      top: MediaQuery.of(context).size.height/6,
       left: 20,
       child: Container(
         height: 50,

@@ -14,7 +14,7 @@ class PopularCard extends StatelessWidget {
       padding: const EdgeInsets.all(10),
       child: Container(
         width: MediaQuery.of(context).size.width / 2.4,
-        height: 220,
+        height: MediaQuery.of(context).size.height/4,
         decoration: BoxDecoration(
           color: foodStuff.bgColor,
           borderRadius: BorderRadius.circular(16),
@@ -27,7 +27,7 @@ class PopularCard extends StatelessWidget {
               padding: const EdgeInsets.all(18),
               child: Container(
                 width: MediaQuery.of(context).size.width / 2,
-                height: 110,
+                height: MediaQuery.of(context).size.height/10,
                 decoration: BoxDecoration(
                   image: DecorationImage(
                     image: AssetImage(foodStuff.image),

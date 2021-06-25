@@ -49,6 +49,7 @@ class _CartScreenState extends State<CartScreen> {
       locationColor: Colors.grey[50],
       locationName: 'Italy',
     ),
+    
   ];
 
   @override
@@ -58,26 +59,26 @@ class _CartScreenState extends State<CartScreen> {
         backgroundColor: ktextLightColor,
         iconTheme: IconThemeData(color: kSecondaryColor),
         elevation: 0,
-        actions: [ProfileImage()],
+        actions: [
+          Padding(
+            padding: const EdgeInsets.only(right: 20),
+            child: ProfileImage(),
+          )
+        ],
       ),
       body: Container(
-        height: MediaQuery.of(context).size.height,
-        child: Stack(
-          children: [
-            Positioned(
-              child: Column(
-                children: List.generate(
-                  foodStuffs2.length,
-                  (index) => SingleCart(
-                    foodStuff: foodStuffs2[index],
-                  ),
-                ),
-              ),
-            ),
-            BottomAction()
-          ],
+        height: MediaQuery.of(context).size.height/1.2,
+        child: ListView.builder(
+          itemBuilder: (BuildContext context, int index) {
+            return SingleCart(
+              foodStuff: foodStuffs2[index],
+            );
+          },
+          scrollDirection: Axis.vertical,
+          itemCount: foodStuffs2.length,
         ),
       ),
+      bottomSheet: BottomAction(),
     );
   }
 }

@@ -64,13 +64,12 @@ class _HomeScreenState extends State<HomeScreen> {
         image: 'assets/images/peach.png',
         textColor: Colors.redAccent),
     FoodStuff(
-      name: 'Papaya',
-      amount: '3.50',
-      bgColor: Color(0xFF6CA82C),
-      textColor: Colors.orange[400],
-      image: 'assets/images/pineapple.png',
-      locationColor: Colors.grey[50]
-    ),
+        name: 'Papaya',
+        amount: '3.50',
+        bgColor: Color(0xFF6CA82C),
+        textColor: Colors.orange[400],
+        image: 'assets/images/pineapple.png',
+        locationColor: Colors.grey[50]),
   ];
 
   @override
@@ -78,91 +77,96 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       body: Container(
         height: MediaQuery.of(context).size.height,
-        child: Stack(
+        child: Column(
           children: [
-            Container(
-              height: MediaQuery.of(context).size.height / 3.8,
-              decoration: BoxDecoration(
-                color: kPrimaryColor,
-                borderRadius: BorderRadius.only(
-                  bottomLeft: Radius.circular(40),
-                  bottomRight: Radius.circular(40),
-                ),
-              ),
-              child: Stack(
-                children: [
-                  Positioned(
-                    top: 45,
-                    left: 20,
-                    child: Container(
-                      width: MediaQuery.of(context).size.width / 1.17,
-                      height: 45,
-                      // color: Colors.white,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Icon(
-                            Icons.menu,
-                            color: ktextLightColor,
-                            size: 34,
-                          ),
-                          Row(
-                            children: [
-                              ShowCart(),
-                              Padding(
-                                padding: const EdgeInsets.only(left: 12),
-                                child: ProfileImage(),
-                              ),
-                            ],
-                          )
-                        ],
-                      ),
+            Stack(
+              children: [
+                Container(
+                  height: MediaQuery.of(context).size.height / 3,
+                  decoration: BoxDecoration(
+                    color: kPrimaryColor,
+                    borderRadius: BorderRadius.only(
+                      bottomLeft: Radius.circular(40),
+                      bottomRight: Radius.circular(40),
                     ),
                   ),
-                  SearchBox(),
-                ],
-              ),
-            ),
-            Positioned(
-              top: 170,
-              left: 16,
-              child: Container(
-                height: 90,
-                width: MediaQuery.of(context).size.width,
-                child: ListView.builder(
-                  itemBuilder: (BuildContext context, int index) {
-                    return MenuCard(
-                      menu: menuLists[index],
-                    );
-                  },
-                  scrollDirection: Axis.horizontal,
-                  itemCount: menuLists.length,
+                  child: Stack(
+                    children: [
+                      Positioned(
+                        top: MediaQuery.of(context).size.height / 14,
+                        left: 20,
+                        child: Container(
+                          width: MediaQuery.of(context).size.width / 1.17,
+                          height: 45,
+                          // color: Colors.white,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Icon(
+                                Icons.menu,
+                                color: ktextLightColor,
+                                size: 34,
+                              ),
+                              Row(
+                                children: [
+                                  ShowCart(),
+                                  Padding(
+                                    padding: const EdgeInsets.only(left: 12),
+                                    child: ProfileImage(),
+                                  ),
+                                ],
+                              )
+                            ],
+                          ),
+                        ),
+                      ),
+                      SearchBox(),
+                    ],
+                  ),
                 ),
-              ),
+                Positioned(
+                  top: MediaQuery.of(context).size.height / 4,
+                  left: 16,
+                  child: Container(
+                    height: 90,
+                    width: MediaQuery.of(context).size.width,
+                    child: ListView.builder(
+                      itemBuilder: (BuildContext context, int index) {
+                        return MenuCard(
+                          menu: menuLists[index],
+                        );
+                      },
+                      scrollDirection: Axis.horizontal,
+                      itemCount: menuLists.length,
+                    ),
+                  ),
+                ),
+              ],
             ),
-            PopularRow(),
-            Positioned(
-              top: 305,
-              left: 10,
-              child: Row(
-                children: List.generate(foodStuffs.length, (index) {
-                  print(foodStuffs[index].image);
-                  return PopularCard(
-                    foodStuff: foodStuffs[index],
-                  );
-                }),
-              ),
-            ),
-            Positioned(
-              top: 545,
-              left: 10,
-              child: Row(
-                children: List.generate(foodStuffs.length, (index) {
-                  print(foodStuffs[index].image);
-                  return PopularCard(
-                    foodStuff: foodStuffs2[index],
-                  );
-                }),
+            // SizedBox(
+            //   height: 30,
+            // ),
+            Padding(
+              padding:  EdgeInsets.only(top: 30),
+              child: Column(
+                children: [
+                  PopularRow(),
+                  Row(
+                    children: List.generate(foodStuffs.length, (index) {
+                      return PopularCard(
+                        foodStuff: foodStuffs[index],
+                      );
+                    }),
+                  ),
+                  Row(
+                    children: List.generate(foodStuffs.length, (index) {
+                      print(foodStuffs[index].image);
+                      return PopularCard(
+                        foodStuff: foodStuffs2[index],
+                      );
+                    }),
+                  )
+                ],
               ),
             )
           ],
