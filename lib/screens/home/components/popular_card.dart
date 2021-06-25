@@ -14,7 +14,7 @@ class PopularCard extends StatelessWidget {
       padding: const EdgeInsets.all(10),
       child: Container(
         width: MediaQuery.of(context).size.width / 2.4,
-        height: MediaQuery.of(context).size.height/4,
+        height: MediaQuery.of(context).size.height / 4.5,
         decoration: BoxDecoration(
           color: foodStuff.bgColor,
           borderRadius: BorderRadius.circular(16),
@@ -26,8 +26,8 @@ class PopularCard extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.all(18),
               child: Container(
-                width: MediaQuery.of(context).size.width / 2,
-                height: MediaQuery.of(context).size.height/10,
+                width: MediaQuery.of(context).size.width * 0.3,
+                height: MediaQuery.of(context).size.height * 0.08,
                 decoration: BoxDecoration(
                   image: DecorationImage(
                     image: AssetImage(foodStuff.image),
@@ -56,7 +56,9 @@ class PopularCard extends StatelessWidget {
                         Text(
                           'Ecuador',
                           style: TextStyle(
-                            color: foodStuff.locationColor==null ? Colors.grey[600] : foodStuff.locationColor,
+                            color: foodStuff.locationColor == null
+                                ? Colors.grey[600]
+                                : foodStuff.locationColor,
                             fontWeight: FontWeight.w500,
                           ),
                         ),

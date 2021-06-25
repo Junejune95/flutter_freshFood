@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:freshFood/models/foodStuff.dart';
 import 'package:freshFood/models/menu.dart';
+import 'package:freshFood/screens/home/header_home.dart';
 
 import '../../constants.dart';
 import 'components/menu_card.dart';
@@ -74,102 +75,39 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     return Scaffold(
-      body: Container(
-        height: MediaQuery.of(context).size.height,
-        child: Column(
-          children: [
-            Stack(
-              children: [
-                Container(
-                  height: MediaQuery.of(context).size.height / 3,
-                  decoration: BoxDecoration(
-                    color: kPrimaryColor,
-                    borderRadius: BorderRadius.only(
-                      bottomLeft: Radius.circular(40),
-                      bottomRight: Radius.circular(40),
-                    ),
-                  ),
-                  child: Stack(
-                    children: [
-                      Positioned(
-                        top: MediaQuery.of(context).size.height / 14,
-                        left: 20,
-                        child: Container(
-                          width: MediaQuery.of(context).size.width / 1.17,
-                          height: 45,
-                          // color: Colors.white,
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Icon(
-                                Icons.menu,
-                                color: ktextLightColor,
-                                size: 34,
-                              ),
-                              Row(
-                                children: [
-                                  ShowCart(),
-                                  Padding(
-                                    padding: const EdgeInsets.only(left: 12),
-                                    child: ProfileImage(),
-                                  ),
-                                ],
-                              )
-                            ],
-                          ),
-                        ),
-                      ),
-                      SearchBox(),
-                    ],
-                  ),
-                ),
-                Positioned(
-                  top: MediaQuery.of(context).size.height / 4,
-                  left: 16,
-                  child: Container(
-                    height: 90,
-                    width: MediaQuery.of(context).size.width,
-                    child: ListView.builder(
-                      itemBuilder: (BuildContext context, int index) {
-                        return MenuCard(
-                          menu: menuLists[index],
+      body: SafeArea(
+        child: Container(
+          height: size.height,
+          child: Column(
+            children: [
+            HeaderHome(),
+              Padding(
+                padding: EdgeInsets.only(top: 10),
+                child: Column(
+                  children: [
+                    PopularRow(),
+                    Row(
+                      children: List.generate(foodStuffs.length, (index) {
+                        return PopularCard(
+                          foodStuff: foodStuffs[index],
                         );
-                      },
-                      scrollDirection: Axis.horizontal,
-                      itemCount: menuLists.length,
+                      }),
                     ),
-                  ),
+                    Row(
+                      children: List.generate(foodStuffs.length, (index) {
+                        print(foodStuffs[index].image);
+                        return PopularCard(
+                          foodStuff: foodStuffs2[index],
+                        );
+                      }),
+                    )
+                  ],
                 ),
-              ],
-            ),
-            // SizedBox(
-            //   height: 30,
-            // ),
-            Padding(
-              padding:  EdgeInsets.only(top: 30),
-              child: Column(
-                children: [
-                  PopularRow(),
-                  Row(
-                    children: List.generate(foodStuffs.length, (index) {
-                      return PopularCard(
-                        foodStuff: foodStuffs[index],
-                      );
-                    }),
-                  ),
-                  Row(
-                    children: List.generate(foodStuffs.length, (index) {
-                      print(foodStuffs[index].image);
-                      return PopularCard(
-                        foodStuff: foodStuffs2[index],
-                      );
-                    }),
-                  )
-                ],
-              ),
-            )
-          ],
+              )
+            ],
+          ),
         ),
       ),
     );
